@@ -1,7 +1,7 @@
 name: test Package
 
 on:
-  release:
+  publish:
     branches:
       - main
 jobs:
@@ -17,10 +17,6 @@ jobs:
         with:
           node-version: 16.13.x
           registry-url: https://registry.npmjs.org/
-      - name: Install and Build
-        run: |
-          npm install --legacy-peer-deps
-          npm run build
       - name: publish-npm
         run: |
           npm publish  --scope=@tinymce-plugin --access public
