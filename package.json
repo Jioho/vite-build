@@ -1,0 +1,36 @@
+{
+  "name": "@tinymce-plugin/vite-build",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Five",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p . --outDir dist"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinymce-plugin/vite-build.git",
+    "directory": "@tinymce-plugin/vite-build"
+  },
+  "bugs": {
+    "url": "https://github.com/tinymce-plugin/vite-build/issues"
+  },
+  "homepage": "https://github.com/tinymce-plugin/vite-build#readme",
+  "peerDependencies": {
+    "vite": "^2.9.5",
+    "vue": "^3.2.25",
+    "@rollup/plugin-typescript": "^8.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.25",
+    "rollup": "^2.59.0",
+    "vue": "^3.2.33"
+  }
+}
