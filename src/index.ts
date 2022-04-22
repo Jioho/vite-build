@@ -8,9 +8,11 @@ import typescript from '@rollup/plugin-typescript';
 const buildFormatMap = {'umd':'plugin.umd.js','es':'index.js','iife':'plugin.js'};
 
 const viteBuildConfig = (options:any={}):UserConfig=>{
-  if(options?.pkg){
-    options.pkg = require(path.resolve(__dirname, 'package.json'))
+  const root = process.cwd()
+  if(!options?.pkg){
+    options.pkg = require(path.resolve(root,'package.json'))
   }
+ 
   return {
     server: {
       host: '0.0.0.0',
@@ -21,14 +23,14 @@ const viteBuildConfig = (options:any={}):UserConfig=>{
     plugins:[typescript({ compilerOptions: {lib: ["es5", "es6", "dom"], target: "es5"}}),viteBuildPlugin(setBuildBanner(options.pkg))],
     build: {
       lib:{
-        entry: path.resolve(__dirname, 'src/main.ts'),
+        entry: path.resolve(root, 'src/main.ts'),
         // name: namingFormat.toHump(pkg.name.replace(/\@tinymce-plugin\//,'')),
         name: namingFormat.toHump(options.pkg.name.replace(/\@tinymce-plugin\//,'')),
         formats: ['iife'],
         fileName: (format) => 'plugin.js',
        },
        minify: false,
-       outDir: path.resolve(__dirname, 'dist'),
+       outDir: path.resolve(root, 'dist'),
     }
   }
 }

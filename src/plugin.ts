@@ -66,7 +66,7 @@ export const viteBuildPlugin = (pluginConfig?: any) => {
             // Save
             fs.writeFileSync(filePath, data)
             //ceate index.js
-            fs.writeFileSync('./index.js', `require('./${outDir}/plugin.min.js')`)
+            fs.writeFileSync(path.resolve(root, outDir, 'index.js'), `require('${path.resolve(root, outDir)}/plugin.min.js')`)
           } catch (e) {
             // console.log(e)
           }

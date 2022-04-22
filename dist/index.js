@@ -15,8 +15,9 @@ const plugin_typescript_1 = __importDefault(require("@rollup/plugin-typescript")
 const buildFormatMap = { 'umd': 'plugin.umd.js', 'es': 'index.js', 'iife': 'plugin.js' };
 exports.buildFormatMap = buildFormatMap;
 const viteBuildConfig = (options = {}) => {
-    if (options === null || options === void 0 ? void 0 : options.pkg) {
-        options.pkg = require(path_1.default.resolve(__dirname, 'package.json'));
+    const root = process.cwd();
+    if (!(options === null || options === void 0 ? void 0 : options.pkg)) {
+        options.pkg = require(path_1.default.resolve(root, 'package.json'));
     }
     return {
         server: {
@@ -28,14 +29,14 @@ const viteBuildConfig = (options = {}) => {
         plugins: [plugin_typescript_1.default({ compilerOptions: { lib: ["es5", "es6", "dom"], target: "es5" } }), plugin_1.viteBuildPlugin(Banner_1.setBuildBanner(options.pkg))],
         build: {
             lib: {
-                entry: path_1.default.resolve(__dirname, 'src/main.ts'),
+                entry: path_1.default.resolve(root, 'src/main.ts'),
                 // name: namingFormat.toHump(pkg.name.replace(/\@tinymce-plugin\//,'')),
                 name: hooks_1.namingFormat.toHump(options.pkg.name.replace(/\@tinymce-plugin\//, '')),
                 formats: ['iife'],
                 fileName: (format) => 'plugin.js',
             },
             minify: false,
-            outDir: path_1.default.resolve(__dirname, 'dist'),
+            outDir: path_1.default.resolve(root, 'dist'),
         }
     };
 };
