@@ -25,7 +25,9 @@
   "homepage": "https://github.com/tinymce-plugin/vite-build#readme",
   "peerDependencies": {
     "vite": "^2.9.5",
-    "vue": "^3.2.25",
+    "vue": "^3.2.25"
+  },
+  "dependencies":{
     "@rollup/plugin-typescript": "^8.3.1"
   },
   "devDependencies": {
