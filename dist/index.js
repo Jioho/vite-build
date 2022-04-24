@@ -26,7 +26,7 @@ const viteBuildConfig = (options = {}) => {
             // 是否开启 https
             https: false,
         },
-        plugins: [plugin_typescript_1.default({ compilerOptions: { lib: ["es5", "es6", "dom"], target: "es5" } }), plugin_1.viteBuildPlugin(Banner_1.setBuildBanner(options.pkg))],
+        plugins: [(0, plugin_typescript_1.default)({ compilerOptions: { lib: ["es5", "es6", "dom"], target: "es5" } }), (0, plugin_1.viteBuildPlugin)((0, Banner_1.setBuildBanner)(options.pkg))],
         build: {
             lib: {
                 entry: path_1.default.resolve(root, 'src/main.ts'),
